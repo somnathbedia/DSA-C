@@ -50,6 +50,27 @@ void insertTail(int a)
     current->next=temp;
 }
 
+
+void insertPosition(int data,int pos){
+    struct Node* temp = HEAD;
+
+    if(pos==1)
+    {
+        insert(data);
+        return;
+    }
+
+    for(int i = 2; i < pos; i++)
+    {
+        temp=temp->next;
+    }
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data=data;
+    newNode->next=temp->next;
+    temp->next=newNode;
+
+}
+
 void print()
 {
     struct Node* temp = HEAD;
@@ -73,5 +94,9 @@ void main()
     {
         insertTail(A[i]);
     }
+    print();
+
+    insertPosition(981,5);
+
     print();
 }
