@@ -85,6 +85,30 @@ void print()
     
 }
 
+void reverseList()
+{
+    struct Node* prev=NULL;
+    struct Node* current=HEAD;
+    struct Node* next = NULL;
+
+    
+    struct Node* temp=NULL;
+    
+    while(current != NULL)
+    {
+    
+        // Take reference for next node
+       next=current->next;
+        
+       // update pointers
+        current->next=prev;
+        prev=current;
+        current=next;
+    }
+    
+    HEAD=prev;
+}
+
 void main()
 {
     HEAD=NULL;
@@ -94,9 +118,8 @@ void main()
     {
         insertTail(A[i]);
     }
-    print();
-
-    insertPosition(981,5);
+    
+    reverseList();
 
     print();
 }
