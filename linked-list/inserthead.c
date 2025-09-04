@@ -85,6 +85,39 @@ void print()
     
 }
 
+void printRec(struct Node* head)
+{
+
+    struct Node* temp=head;
+
+    if(temp == NULL)
+    {
+        return;
+    }
+        
+    printRec(temp->next);
+    printf("%d ",temp->data);
+    
+}
+
+void reverse(struct Node* temp)
+{
+    if(temp->next == NULL)
+    {
+        HEAD=temp;
+        return;
+    }
+
+    reverse(temp->next);
+
+    // pointer to the last node
+    struct Node* q = temp->next;
+    q->next=temp;
+    temp->next=NULL;
+     
+
+}
+
 void reverseList()
 {
     struct Node* prev=NULL;
@@ -119,7 +152,10 @@ void main()
         insertTail(A[i]);
     }
     
-    reverseList();
+    // reverseList();
 
+    reverse(HEAD);
     print();
+ 
+    // printRec(HEAD);
 }
